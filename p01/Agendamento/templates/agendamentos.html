@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="{% static 'img/icons/iconsusagenda.jfif' %}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/maps-google.html" />
+
+	<title>Agendamentos</title>
+
+	<link href="{% static 'css/app.css' %}"  rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="/inicio/">
+					<img src="{% static 'img/icons/unisaude.png' %}" class="avatar img-fluid rounded me-1"/>
+				<span class="align-middle">SUS Agenda</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Páginas
+					</li>
+					<a class="sidebar-link" href="/inicio/">
+						<i class="align-middle" data-feather="menu"></i> <span class="align-middle">Menu Inicial</span>
+					  </a>
+							  </li>
+					
+					
+					
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="/agendamentos/">
+              <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Agendamentos</span>
+            </a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/localdetrabalho/">
+              <i class="align-middle" data-feather="map-pin"></i> <span class="align-middle">Local de Trabalho</span>
+            </a>
+					</li>
+
+				</ul>
+
+				<div class="sidebar-cta">
+					
+				</div>
+			</div>
+		</nav>
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								
+							</a>
+							
+								
+									
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" ></i>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+								</div>
+									</a>
+									
+									<li class="nav-item dropdown">
+										<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+											<div class="position-relative">
+												<i class="align-middle"></i>
+											
+											<a class="dropdown-item" href="/"></a>
+										</div>
+										
+										</a>
+										<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0">
+											<div class="dropdown-menu-header">
+												
+											</div>
+											<div class="list-group">
+												<a href="#" class="list-group-item">
+													<div class="row g-0 align-items-center">
+														<div class="col-2">
+														
+														</div>
+														
+									<li class="nav-item dropdown">
+										<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+											
+							<i class="align-middle" data-feather="settings"></i>
+						  </a>
+			
+										<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+											<img src="{% static 'img/avatars/user.png'%}" class="avatar img-fluid rounded me-1" /> <span class="text-dark">Usuário</span>
+										</a>
+						  </a>
+										<div class="dropdown-menu dropdown-menu-end">
+					
+											
+											<a class="dropdown-item" href="/">Sair</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</nav>
+						
+						<main class="content">
+							<div class="container-fluid p-0">
+						<div class="mb-3">
+							<h1 class="h3 d-inline align-middle">Agendamentos</h1>
+							
+						</div>
+						<div class="col-12 col-lg-6">
+							<div class="card flex-fill">
+								
+								<table class="table my-0">
+									<thead>
+										<tr>
+										<th class="d-none d-xl-table-cell">Dia</th>
+										<th class="d-none d-xl-table-cell">Editar</th>
+										<th class="d-none d-xl-table-cell">Deletar</th>
+										<th class="d-none d-xl-table-cell">Redirecionar</th>
+										
+										</tr>
+									</thead>
+									<tbody>
+										{% for loc in agendamentosmes %}
+										<tr>
+											<td class="d-none d-xl-table-cell"> {{ loc.agm_data }} </td>
+											
+											<td class=""><a href="{% url 'url_update8' loc.agm_codigo %}"><i class="align-middle" data-feather="edit"></i></a>   
+											</td>
+											<td class=""><a href="{% url 'url_delete8' loc.agm_codigo %}"><i class="align-middle" data-feather="trash"></i></a>   
+											</td>
+											<td>
+											<a href="{% url 'agendamentosdia1' loc.agm_codigo %}"><i class="align-middle" data-feather="arrow-right-circle"></i></a>
+											</td>
+											
+										</tr>
+										{% endfor %}
+								</table>
+							</div>
+							<a href="/createAgm/"><button class = "btn btn-primary">Adicionar</button></a>
+							<main class="content">
+							<div class="container-fluid p-0">
+							</div>
+						</div>
+			
+				<div class="container-fluid p-0">
+				</div>
+			</main>
+				
+
+	<script src="{% static 'js/app.js' %}"></script>
+
+	<script>
+		function initMaps() {
+			var defaultMap = {
+				zoom: 14,
+				center: {
+					lat: 40.712784,
+					lng: -74.005941
+				},
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			new google.maps.Map(document.getElementById("default_map"), defaultMap);
+			var hybridMap = {
+				zoom: 14,
+				center: {
+					lat: 40.712784,
+					lng: -74.005941
+				},
+				mapTypeId: google.maps.MapTypeId.HYBRID
+			};
+			new google.maps.Map(document.getElementById("hybrid_map"), hybridMap);
+		}
+	</script>
+	
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-aWrwgr64q4b3TEZwQ0lkHI4lZK-moM4&callback=initMaps" async defer></script>
+
+</body>
+
+</html>
